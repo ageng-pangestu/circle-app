@@ -40,10 +40,10 @@ const NAV_Item = [
 const NavItem = () => {
   return NAV_Item.map((item) => {
     return (
-      <Box width={"fit-content"}>
+      <Box key={item.name} width={"fit-content"}>
         <NavLink to={item.path} style={{ textDecoration: "none" }}>
           {({ isActive }) => (
-            <Typography color={isActive ? "mediumslateblue" : "white"} sx={{ mb: 3, fontSize: "1.5rem" }}>
+            <Typography color={isActive ? "mediumslateblue" : "white"} sx={{ mb: 3, fontSize: "1.2rem" }}>
               <Icon icon={item.icon.active} /> {item.name}
             </Typography>
           )}

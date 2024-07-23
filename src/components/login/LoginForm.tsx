@@ -1,9 +1,14 @@
 import { Button, Typography } from "@mui/material";
 import CustomInput from "../common/Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import useStore from "../../stores/hooks";
 
-const RegisterForm = () => {
+const LoginForm = () => {
+  // const navigate = useNavigate();
+
+  const { setUser } = useStore();
+
   return (
     <form
       style={{
@@ -27,7 +32,7 @@ const RegisterForm = () => {
           Forget Password?
         </Link>
       </Typography>
-      <Button variant="contained" sx={{ borderRadius: 23, backgroundColor: "mediumslateblue", color: "white" }}>
+      <Button onClick={() => setUser({ email: "admin@mail.com", fullName: "admin1", userName: "admin1" })} variant="contained" sx={{ borderRadius: 23, backgroundColor: "mediumslateblue", color: "white" }}>
         Login
       </Button>
       <Typography variant="body2" color="white">
@@ -40,4 +45,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default LoginForm;

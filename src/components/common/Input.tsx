@@ -3,11 +3,12 @@ import React from "react";
 
 interface InputProps extends InputBaseProps {}
 
-const CustomInput: React.FC<InputProps> = ({ ...rest }) => {
+const CustomInput = React.forwardRef<HTMLInputElement, InputProps>(({ ...rest }, ref) => {
   return (
     <Input
       {...rest}
       disableUnderline
+      ref={ref}
       sx={{
         width: "100%",
         border: "1px solid gray",
@@ -17,6 +18,5 @@ const CustomInput: React.FC<InputProps> = ({ ...rest }) => {
       }}
     />
   );
-};
-
+});
 export default CustomInput;

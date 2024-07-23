@@ -5,7 +5,6 @@ import RootLayout from "../layout/RootLayout";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import AuthLayout from "../layout/AuthLayout";
-import RegisterTest from "../components/register/RegisterTest";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
 
@@ -30,6 +29,14 @@ const routes: RouteObject[] = [
         path: "profile",
         element: <About />,
       },
+      {
+        path: "userdetail/:id",
+        element: (
+          <>
+            <h1>User Detail</h1>
+          </>
+        ),
+      },
     ],
   },
   {
@@ -43,10 +50,6 @@ const routes: RouteObject[] = [
       {
         path: "login",
         element: <Login />,
-      },
-      {
-        path: "registertest",
-        element: <RegisterTest />,
       },
       {
         path: "forgotpassword",

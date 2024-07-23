@@ -1,9 +1,23 @@
-import { Button, Typography } from "@mui/material";
+import { Button, FormControl, FormHelperText, Typography } from "@mui/material";
 import CustomInput from "../common/Input";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { useRegisterValidation } from "./hooks/useRegisterValidation";
+import { Controller } from "react-hook-form";
+import { IRegisterForm } from "../../types/register";
 
 const RegisterForm = () => {
+  const { control, handleSubmit, reset, watch } = useRegisterValidation();
+
+  const onSubmit = (data: IRegisterForm) => {
+    console.log(data);
+    reset();
+  };
+
+  const onError = (errors: any) => {
+    console.log(errors);
+  };
+
   return (
     <form
       style={{
@@ -12,6 +26,7 @@ const RegisterForm = () => {
         flexDirection: "column",
         gap: 25,
       }}
+      onSubmit={handleSubmit(onSubmit, onError)}
     >
       <Typography variant="h3" fontWeight={"bold"} color="mediumslateblue">
         <Icon icon={"game-icons:pool-triangle"} />
@@ -21,10 +36,56 @@ const RegisterForm = () => {
       <Typography variant="h4" fontWeight={"bold"} color="white">
         Create account Triangle
       </Typography>
-      <CustomInput placeholder="Fullname*" sx={{ mb: 2 }} />
-      <CustomInput placeholder="Email*" />
-      <CustomInput type="Password" placeholder="Password*" />
-      <Button variant="contained" sx={{ borderRadius: 23, backgroundColor: "mediumslateblue" }}>
+      <Controller
+        control={control}
+        name="fullName"
+        render={({ field, fieldState }) => (
+          <FormControl error={Boolean(fieldState.error)}>
+            <CustomInput
+              placeholder="Fullname"
+              sx={{ mb: 2 }}
+              {...field}
+              // onChange={field.onChange}
+              // value={field.value}
+              // onBlur={field.onBlur}
+            />
+            {Boolean(fieldState.error) && <FormHelperText>{fieldState.error?.message}</FormHelperText>}
+          </FormControl>
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="username"
+        render={({ field, fieldState }) => (
+          <FormControl error={Boolean(fieldState.error)}>
+            <CustomInput placeholder="UserName" sx={{ mb: 2 }} {...field} />
+            {Boolean(fieldState.error) && <FormHelperText>{fieldState.error?.message}</FormHelperText>}
+          </FormControl>
+        )}
+      />
+      <Controller
+        control={control}
+        name="email"
+        render={({ field, fieldState }) => (
+          <FormControl error={Boolean(fieldState.error)}>
+            <CustomInput placeholder="Email" sx={{ mb: 2 }} {...field} />
+            {Boolean(fieldState.error) && <FormHelperText>{fieldState.error?.message}</FormHelperText>}
+          </FormControl>
+        )}
+      />
+      <Controller
+        control={control}
+        name="password"
+        render={({ field, fieldState }) => (
+          <FormControl error={Boolean(fieldState.error)}>
+            <CustomInput placeholder="Password" sx={{ mb: 2 }} {...field} />
+            {Boolean(fieldState.error) && <FormHelperText>{fieldState.error?.message}</FormHelperText>}
+          </FormControl>
+        )}
+      />
+
+      <Button type="submit" variant="contained" sx={{ borderRadius: 23, backgroundColor: "mediumslateblue", color: "white" }}>
         Create
       </Button>
 
