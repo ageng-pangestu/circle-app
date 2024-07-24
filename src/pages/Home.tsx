@@ -6,7 +6,7 @@ import Feed from "../components/home/Feed";
 const Home = () => {
   // const { count, decrement, increment } = useStore();
   return (
-    <Box>
+    <Box sx={{ backgroundColor: "#1d1d1d" }}>
       <PostBar />
       <Feed />
     </Box>

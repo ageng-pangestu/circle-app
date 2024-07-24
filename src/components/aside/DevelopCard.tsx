@@ -1,6 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Box, Typography } from "@mui/material";
-import React from "react";
 
 const DevelopCard = () => {
   return (

@@ -1,8 +1,8 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Avatar, Box, Typography } from "@mui/material";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
-const FEED_Item = [
+const POST_Item = [
   {
     id: "1",
     avatar: "https://img.pikbest.com/origin/10/07/30/96YpIkbEsT54N.png!sw800",
@@ -15,54 +15,31 @@ const FEED_Item = [
     totalReplies: 0,
   },
   {
-    id: "2",
-    avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSL0CoAJtnTcsCIRzkMY2_rFunkdhcdAJ0hA&s",
-    fullName: "Reva Fidela",
-    userName: "@revafv",
-    content: "semuanya makasih banyak buat ucapannya dan doanya untuk ulang tahun aku yang ke 18 🤗, semoga yang baik baik berbalik ke kalian semua yaaa aminnn!!!",
+    id: "1",
+    avatar: "https://img.pikbest.com/origin/10/07/30/96YpIkbEsT54N.png!sw800",
+    fullName: "Ageng Pangestu",
+    userName: "@agengpangestu",
+    content: "Tes asdj askjdadf akusdbb asdbask ausbd",
     image: "",
-    time: "3h",
-    totalLike: 162,
-    totalReplies: 211,
+    time: "1h",
+    totalLike: 1,
+    totalReplies: 0,
   },
   {
-    id: "3",
-    avatar: "https://www.greenscene.co.id/wp-content/uploads/2022/07/Bartolomeo-2.jpg",
-    fullName: "Bartolomeo",
-    userName: "@btmeomugiwara",
-    content: "Lagi di Elbaf bareng kapten luffy, zoro ga tau dimana disuruh nyari makan. cape bener sama ni orang.",
+    id: "1",
+    avatar: "https://img.pikbest.com/origin/10/07/30/96YpIkbEsT54N.png!sw800",
+    fullName: "Ageng Pangestu",
+    userName: "@agengpangestu",
+    content: "Tes asdj askjdadf akusdbb asdbask ausbd",
     image: "",
-    time: "7h",
-    totalLike: 205,
-    totalReplies: 50,
-  },
-  {
-    id: "4",
-    avatar: "https://www.greenscene.co.id/wp-content/uploads/2022/07/Bartolomeo-2.jpg",
-    fullName: "Brook",
-    userName: "@yohohoho",
-    content: "Lagi di Elbaf bareng kapten luffy, zoro ga tau dimana disuruh nyari makan. cape bener sama ni orang.",
-    image: "",
-    time: "7h",
-    totalLike: 205,
-    totalReplies: 50,
-  },
-  {
-    id: "4",
-    avatar: "https://www.greenscene.co.id/wp-content/uploads/2022/07/Bartolomeo-2.jpg",
-    fullName: "Brook",
-    userName: "@yohohoho",
-    content: "Lagi di Elbaf bareng kapten luffy, zoro ga tau dimana disuruh nyari makan. cape bener sama ni orang.",
-    image: "",
-    time: "7h",
-    totalLike: 205,
-    totalReplies: 50,
+    time: "1h",
+    totalLike: 1,
+    totalReplies: 0,
   },
 ];
-const Feed = () => {
-  const navigate = useNavigate();
 
-  return FEED_Item.map((item) => {
+const PostItem = () => {
+  return POST_Item.map((item) => {
     return (
       <Box key={item.userName} sx={{ display: "flex", padding: 2, borderBottom: "1px solid gray", gap: 2 }}>
         <Box>
@@ -106,4 +83,4 @@ const Feed = () => {
   });
 };
 
-export default Feed;
+export default PostItem;

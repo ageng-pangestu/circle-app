@@ -7,7 +7,11 @@ const AuthLayout = () => {
   if (isLogin) {
     return <Navigate to="/" />;
   }
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };
 
 export default AuthLayout;

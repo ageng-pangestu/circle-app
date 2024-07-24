@@ -13,7 +13,7 @@ const RootLayout = () => {
 
   return (
     <Box sx={{ height: "100vh", display: "flex" }}>
-      <Box sx={{ flex: 1, borderRight: "1px solid gray", backgroundColor: "#1d1d1d" }}>
+      <Box sx={{ flex: 1, borderRight: "1px solid gray" }}>
         <SideBar />
       </Box>
       <Box sx={{ flex: 2, backgroundColor: "#1d1d1d" }}>
