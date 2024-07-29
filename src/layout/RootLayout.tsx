@@ -1,11 +1,15 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
 import SideBar from "../components/sidebar/SideBar";
 import useStore from "../stores/hooks";
-import Aside from "../components/aside/Aside";
+import Aside from "../pages/Aside";
 
 const RootLayout = () => {
   const { isLogin } = useStore();
+
+  const { pathname } = useLocation();
+
+  console.log(pathname);
 
   if (!isLogin) {
     return <Navigate to="/auth/login" />;

@@ -6,12 +6,13 @@ import Login from "../pages/Login";
 import AuthLayout from "../layout/AuthLayout";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
-import UserDetail from "../pages/UserDetail";
 import ContentDetail from "../pages/ContentDetail";
 import Search from "../pages/Search";
 import ProfileLayout from "../layout/ProfileLayout";
-import AllPost from "../pages/AllPost";
+import UserLayout from "../layout/UserLayout";
 import Media from "../pages/Media";
+import AllPost from "../pages/AllPost";
+import TestPage from "../pages/TestPage/TestPage";
 
 const routes: RouteObject[] = [
   {
@@ -35,7 +36,7 @@ const routes: RouteObject[] = [
         ),
       },
       {
-        path: "profile",
+        path: "/profile/:username",
         element: <ProfileLayout />,
         children: [
           {
@@ -49,8 +50,18 @@ const routes: RouteObject[] = [
         ],
       },
       {
-        path: "userdetail/:id",
-        element: <UserDetail />,
+        path: "/userdetail",
+        element: <UserLayout />,
+        children: [
+          {
+            index: true,
+            element: <AllPost />,
+          },
+          {
+            path: "media",
+            element: <Media />,
+          },
+        ],
       },
       {
         path: "contentdetail",
@@ -58,10 +69,15 @@ const routes: RouteObject[] = [
       },
     ],
   },
+
   {
     path: "/auth",
     element: <AuthLayout />,
     children: [
+      {
+        path: "test",
+        element: <TestPage />,
+      },
       {
         path: "register",
         element: <Register />,

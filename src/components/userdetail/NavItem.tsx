@@ -1,13 +1,11 @@
 import { Box, Typography } from "@mui/material";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavItem = () => {
-  const { username } = useParams();
-
   return (
     <Box sx={{ display: "flex", px: 2, mt: 1 }}>
       <Box sx={{ flex: 1 }}>
-        <NavLink to={"/profile/" + username} end style={{ textDecoration: "none" }}>
+        <NavLink to={"/userdetail"} end style={{ textDecoration: "none" }}>
           {({ isActive }) => (
             <Typography borderBottom={isActive ? "3px solid mediumslateblue" : "3px solid gray"} sx={{ color: "whitesmoke", textAlign: "center" }}>
               All Post

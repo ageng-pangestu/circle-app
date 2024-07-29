@@ -1,5 +1,7 @@
+import MediaItem from "../components/profile/MediaItem";
+
 const Media = () => {
-  return <div>Media</div>;
+  return <MediaItem />;
 };
 
 export default Media;

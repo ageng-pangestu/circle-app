@@ -9,6 +9,7 @@ export interface IStoreAction {
 
 export interface IUser {
   profile?: Iprofile;
+  id: String;
   userName: String;
   email: String;
   fullName: String;

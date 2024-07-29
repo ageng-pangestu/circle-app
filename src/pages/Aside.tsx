@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
-import SuggestCard from "./SuggestCard";
-import ProfileCard from "./ProfileCard";
-import DevelopCard from "./DevelopCard";
+import ProfileCard from "../components/aside/ProfileCard";
+import SuggestCard from "../components/aside/SuggestCard";
+import DevelopCard from "../components/aside/DevelopCard";
 
 const Aside = () => {
   return (

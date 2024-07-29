@@ -1,6 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import CustomInput from "../common/Input";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import useStore from "../../stores/hooks";
 
@@ -32,7 +32,7 @@ const LoginForm = () => {
           Forget Password?
         </Link>
       </Typography>
-      <Button onClick={() => setUser({ email: "admin@mail.com", fullName: "admin1", userName: "admin1" })} variant="contained" sx={{ borderRadius: 23, backgroundColor: "mediumslateblue", color: "white" }}>
+      <Button onClick={() => setUser({ id: "1", email: "ageng@mail.com", fullName: "Ageng Pangestu", userName: "agengpangestu" })} variant="contained" sx={{ borderRadius: 23, backgroundColor: "mediumslateblue", color: "white" }}>
         Login
       </Button>
       <Typography variant="body2" color="white">

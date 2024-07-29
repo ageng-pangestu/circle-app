@@ -11,6 +11,7 @@ export const Store = createContext<TStore | null>(null);
 export const StoreProvider: React.FC<StoreProps> = ({ children }) => {
   // //ini state
   const [user, setUserState] = useState<IUser>({
+    id: "",
     email: "",
     fullName: "",
     userName: "",
@@ -26,8 +27,10 @@ export const StoreProvider: React.FC<StoreProps> = ({ children }) => {
   };
 
   // //ini action
+
   const clearUser = () => {
     setUserState({
+      id: "",
       email: "",
       fullName: "",
       userName: "",

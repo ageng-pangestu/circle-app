@@ -1,7 +1,14 @@
+import { Box } from "@mui/material";
 import PostItem from "../components/profile/PostItem";
 
 const AllPost = () => {
-  return <PostItem />;
+  return (
+    <>
+      <Box>
+        <PostItem />
+      </Box>
+    </>
+  );
 };
 
 export default AllPost;
