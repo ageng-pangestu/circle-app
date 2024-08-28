@@ -1,16 +1,21 @@
 import { Button, FormControl, FormHelperText, Typography } from "@mui/material";
 import CustomInput from "../common/Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useRegisterValidation } from "./hooks/useRegisterValidation";
 import { Controller } from "react-hook-form";
 import { IRegisterForm } from "../../types/register";
+import { useRegisterFunction } from "./hooks/useRegisterFunction";
 
 const RegisterForm = () => {
-  const { control, handleSubmit, reset, watch } = useRegisterValidation();
+  //ini dari react-hook-form
+  const { control, handleSubmit, reset } = useRegisterValidation();
+  const registerFunction = useRegisterFunction();
+  const navigate = useNavigate();
 
-  const onSubmit = (data: IRegisterForm) => {
-    console.log(data);
+  const onSubmit = async (data: IRegisterForm) => {
+    await registerFunction.register(data);
+    navigate("/auth/login");
     reset();
   };
 
@@ -29,13 +34,13 @@ const RegisterForm = () => {
       onSubmit={handleSubmit(onSubmit, onError)}
     >
       <Typography variant="h3" fontWeight={"bold"} color="mediumslateblue">
-        <Icon icon={"game-icons:pool-triangle"} />
-        Triangle
+        circle
       </Typography>
 
       <Typography variant="h4" fontWeight={"bold"} color="white">
-        Create account Triangle
+        Create account circle
       </Typography>
+
       <Controller
         control={control}
         name="fullName"
@@ -56,7 +61,7 @@ const RegisterForm = () => {
 
       <Controller
         control={control}
-        name="username"
+        name="userName"
         render={({ field, fieldState }) => (
           <FormControl error={Boolean(fieldState.error)}>
             <CustomInput placeholder="UserName" sx={{ mb: 2 }} {...field} />
@@ -79,7 +84,7 @@ const RegisterForm = () => {
         name="password"
         render={({ field, fieldState }) => (
           <FormControl error={Boolean(fieldState.error)}>
-            <CustomInput placeholder="Password" sx={{ mb: 2 }} {...field} />
+            <CustomInput placeholder="Password" type="password" sx={{ mb: 2 }} {...field} />
             {Boolean(fieldState.error) && <FormHelperText>{fieldState.error?.message}</FormHelperText>}
           </FormControl>
         )}

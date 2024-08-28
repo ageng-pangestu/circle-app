@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import useStore from "../../stores/hooks";
 
-function NAV_ITEMS(username: String) {
+function NAV_ITEMS(user_id: String) {
   return [
     {
       name: "Home",
@@ -31,7 +31,7 @@ function NAV_ITEMS(username: String) {
     },
     {
       name: "Profile",
-      path: "/profile/" + username,
+      path: "/profile/" + user_id,
       icon: {
         active: "healthicons:ui-user-profile",
         nonActive: "healthicons:ui-user-profile-outline",
@@ -43,13 +43,13 @@ function NAV_ITEMS(username: String) {
 const NavItem = () => {
   const { user } = useStore();
 
-  return NAV_ITEMS(user.userName).map((item) => {
+  return NAV_ITEMS(user.id).map((item) => {
     return (
       <Box key={item.name} width={"fit-content"}>
         <NavLink to={item.path} style={{ textDecoration: "none" }}>
           {({ isActive }) => (
-            <Typography color={isActive ? "mediumslateblue" : "white"} sx={{ mb: 3, fontSize: "1.2rem" }}>
-              <Icon icon={item.icon.active} /> {item.name}
+            <Typography color={isActive ? "white" : "whitesmoke"} fontWeight={isActive ? "bold" : ""} sx={{ mb: 3, fontSize: "1.2rem" }}>
+              <Icon icon={isActive ? item.icon.active : item.icon.nonActive} /> {item.name}
             </Typography>
           )}
         </NavLink>

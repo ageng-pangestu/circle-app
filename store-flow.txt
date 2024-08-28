@@ -1,0 +1,20 @@
+1.type/store.d.ts
+-buat dan State dan Action (menjadi TStore)
+
+2.store/index.ts
+-Import createContext, useState dari react
+-buat interface StoreProps
+-buat dan export variable Store isinya createContext<TStore | null>(null)
+-buat function StoreProvider degnan parameter children
+-isi function StoreProvider: user, isLogin, setUser, clearUser
+-return variable Store.Provider value={{ user, isLogin, setUser, clearUser }}>{children}</Store.Provider>
+
+3.store/hooks.ts
+-import useContext dari react
+-import Store dari index.ts
+-buat function useStore
+-didalam funtion buat bvariable context yang memanggil useContext(Store)
+
+4.main.tsx
+-Masukan <App/> didalam StoreProvider
+

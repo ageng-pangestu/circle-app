@@ -1,13 +1,23 @@
-import { Button, Typography } from "@mui/material";
+import { Box, Button, FormHelperText, Typography } from "@mui/material";
 import CustomInput from "../common/Input";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import useStore from "../../stores/hooks";
+import { useLoginValidation } from "./hooks/useLoginValidation";
+import { Controller } from "react-hook-form";
+import { useLoginFunction } from "./hooks/useLoginFunction";
+import { ILoginForm } from "../../types/login";
 
 const LoginForm = () => {
-  // const navigate = useNavigate();
+  const { control, handleSubmit, reset } = useLoginValidation();
+  const loginFunc = useLoginFunction();
 
-  const { setUser } = useStore();
+  const onSubmit = async (data: ILoginForm) => {
+    try {
+      await loginFunc.login(data.email, data.password);
+
+      reset();
+    } catch (error) {}
+  };
 
   return (
     <form
@@ -17,24 +27,52 @@ const LoginForm = () => {
         flexDirection: "column",
         gap: 25,
       }}
+      onSubmit={handleSubmit(onSubmit)}
     >
-      <Typography variant="h3" fontWeight={"bold"} color="mediumslateblue">
-        <Icon icon={"game-icons:pool-triangle"} />
-        Triangle
+      <Typography variant="h2" fontWeight={"bold"} color="mediumslateblue">
+        circle
       </Typography>
+
       <Typography variant="h4" fontWeight={"bold"} color="white">
-        Login to Triangle
+        Login to circle
       </Typography>
-      <CustomInput placeholder="Email/Username*" sx={{ mb: 2 }} />
-      <CustomInput type="Password" placeholder="Password*" />
+
+      <Controller
+        control={control}
+        name="email"
+        render={({ field, fieldState }) => (
+          <>
+            <Box sx={{ mb: 2 }}>
+              <CustomInput placeholder="Email/Username*" sx={{ mb: 2 }} {...field} error={!!fieldState.error} />
+              <FormHelperText error>{fieldState.error?.message}</FormHelperText>
+            </Box>
+          </>
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="password"
+        render={({ field, fieldState }) => (
+          <>
+            <Box sx={{ mb: 2 }}>
+              <CustomInput type="Password" placeholder="Password*" {...field} />
+              <FormHelperText error>{fieldState.error?.message}</FormHelperText>
+            </Box>
+          </>
+        )}
+      />
+
       <Typography variant="body1" color="white">
         <Link to={"/auth/forgotpassword"} style={{ color: "white", textDecoration: "none" }}>
           Forget Password?
         </Link>
       </Typography>
-      <Button onClick={() => setUser({ id: "1", email: "ageng@mail.com", fullName: "Ageng Pangestu", userName: "agengpangestu" })} variant="contained" sx={{ borderRadius: 23, backgroundColor: "mediumslateblue", color: "white" }}>
+
+      <Button type="submit" variant="contained" sx={{ borderRadius: 23, backgroundColor: "mediumslateblue", color: "white" }}>
         Login
       </Button>
+
       <Typography variant="body2" color="white">
         Don't have an account yet?{" "}
         <Link to="/auth/register" style={{ color: "mediumslateblue", textDecoration: "none" }}>

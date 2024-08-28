@@ -40,7 +40,7 @@ export const StoreProvider: React.FC<StoreProps> = ({ children }) => {
 
   return (
     <>
-      <Store.Provider value={{ user, isLogin, setUser, clearUser }}>{children}</Store.Provider>;
+      <Store.Provider value={{ user, isLogin, setUser, clearUser }}>{children}</Store.Provider>
     </>
   );
 };

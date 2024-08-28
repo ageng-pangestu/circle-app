@@ -5,7 +5,7 @@ import DevelopCard from "../components/aside/DevelopCard";
 
 const Aside = () => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 2, backgroundColor: "#1d1d1d", height: "100%" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 2, backgroundColor: "#1d1d1d", height: "100 rem" }}>
       <ProfileCard />
       <SuggestCard />
       <DevelopCard />

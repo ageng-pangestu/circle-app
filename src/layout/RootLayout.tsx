@@ -11,6 +11,7 @@ const RootLayout = () => {
 
   console.log(pathname);
 
+  //kondisi jika belum login, pindah ke auth login
   if (!isLogin) {
     return <Navigate to="/auth/login" />;
   }
@@ -21,7 +22,9 @@ const RootLayout = () => {
         <SideBar />
       </Box>
       <Box sx={{ flex: 2, backgroundColor: "#1d1d1d" }}>
-        <Outlet />
+        <Box sx={{ overflow: "scroll", overflowX: "hidden", height: "100vh" }}>
+          <Outlet />
+        </Box>
       </Box>
       <Box sx={{ flex: 1.5, borderLeft: "1px solid gray", backgroundColor: "#1d1d1d" }}>
         <Aside />

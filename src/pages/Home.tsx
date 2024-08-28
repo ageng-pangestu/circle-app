@@ -4,9 +4,8 @@ import Feed from "../components/home/Feed";
 // import useStore from "../stores/hooks";
 
 const Home = () => {
-  // const { count, decrement, increment } = useStore();
   return (
-    <Box sx={{ backgroundColor: "#1d1d1d", overflow: "scroll", overflowX: "hidden", height: "100vh" }}>
+    <Box sx={{ backgroundColor: "#1d1d1d" }}>
       <PostBar />
       <Feed />
     </Box>
@@ -15,6 +14,7 @@ const Home = () => {
 
 export default Home;
 
+// const { count, decrement, increment } = useStore();
 /* <h1>Home</h1>
       <p>{count}</p>
       <button onClick={decrement} style={{ width: "50px" }}>

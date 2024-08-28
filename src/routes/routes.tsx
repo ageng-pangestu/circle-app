@@ -6,13 +6,12 @@ import Login from "../pages/Login";
 import AuthLayout from "../layout/AuthLayout";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
-import ContentDetail from "../pages/ContentDetail";
 import Search from "../pages/Search";
 import ProfileLayout from "../layout/ProfileLayout";
-import UserLayout from "../layout/UserLayout";
 import Media from "../pages/Media";
 import AllPost from "../pages/AllPost";
 import TestPage from "../pages/TestPage/TestPage";
+import DetailPost from "../pages/DetailPost";
 
 const routes: RouteObject[] = [
   {
@@ -31,12 +30,12 @@ const routes: RouteObject[] = [
         path: "follows",
         element: (
           <>
-            <h1>Follows page</h1>
+            <h1 style={{ color: "whitesmoke" }}>Follows page</h1>
           </>
         ),
       },
       {
-        path: "/profile/:username",
+        path: "/profile/:user_id",
         element: <ProfileLayout />,
         children: [
           {
@@ -50,8 +49,8 @@ const routes: RouteObject[] = [
         ],
       },
       {
-        path: "/userdetail",
-        element: <UserLayout />,
+        path: "/user/:user_id",
+        element: <ProfileLayout />,
         children: [
           {
             index: true,
@@ -64,8 +63,8 @@ const routes: RouteObject[] = [
         ],
       },
       {
-        path: "contentdetail",
-        element: <ContentDetail />,
+        path: "post/:post_id",
+        element: <DetailPost />,
       },
     ],
   },
