@@ -3,4 +3,6 @@ export interface IProfileForm {
   fullName?: string;
   userName?: string;
   bio?: string;
+  profile_pic?: string;
+  banner?: string;
 }

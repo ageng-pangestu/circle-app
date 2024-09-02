@@ -15,7 +15,7 @@ const RepliesItem = () => {
     replyFunction.getAllReply(String(post_id)).then((result) => {
       setDataReply(result);
     });
-  }, []);
+  }, [post_id]);
 
   return dataReply.map((item) => {
     return (
@@ -47,12 +47,12 @@ const RepliesItem = () => {
 
           <Box sx={{ display: "flex", gap: 2 }}>
             <Box sx={{ display: "flex", alignItems: "center", marginBottom: 1, gap: 1 }}>
-              <Icon icon={"ph:heart-fill"} color="red" fontSize={"25px"} />
-              <Typography sx={{ color: "gray" }}>20</Typography>
+              <Icon icon={"ph:heart-light"} color="red" fontSize={"25px"} />
+              <Typography sx={{ color: "gray" }}>0</Typography>
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", marginBottom: 1, gap: 1 }}>
               <Icon icon={"majesticons:comment-2-text-line"} color="whitesmoke" fontSize={"25px"} />
-              <Typography sx={{ color: "gray" }}>20</Typography>
+              <Typography sx={{ color: "gray" }}>0</Typography>
             </Box>
           </Box>
         </Box>

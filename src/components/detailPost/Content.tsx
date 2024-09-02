@@ -6,6 +6,7 @@ import { useDetailPostFunction } from "./hook/useDetailPostFuntion";
 import { IPostModel } from "../../types/post";
 import { useLikeFunction } from "../like/hook/useLikeFunction";
 import { userReplyFunction } from "./hook/useReplyFunction";
+const baseUrl = "http://localhost:3000/uploads/";
 
 const Content = () => {
   const useFunction = useDetailPostFunction();
@@ -43,7 +44,7 @@ const Content = () => {
     useReply.countReply(String(post_id)).then((result) => {
       setTotalReply(result);
     });
-  }, []);
+  }, [post_id]);
 
   let iconLike = "";
   if (!isLike) {
@@ -79,6 +80,7 @@ const Content = () => {
           </Box>
         </Box>
         <Typography sx={{ color: "whitesmoke" }}>{dataDetail?.content}</Typography>
+        <img src={`${baseUrl}${dataDetail?.image}`} alt="" style={{ width: "150px" }} />
         <Box sx={{ display: "flex", alignItems: "center", color: "gray" }}>
           <Typography variant="body2">{String(date.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true }))}</Typography>
           <Icon icon={"tabler:point-filled"} color="gray" />

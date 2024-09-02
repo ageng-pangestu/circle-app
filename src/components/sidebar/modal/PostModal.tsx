@@ -1,41 +1,50 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Avatar, Box, Button, FormControl, FormHelperText, Modal, TextareaAutosize } from "@mui/material";
 import React, { useState } from "react";
-import { usePostValidation } from "../../home/hook/usePostValidation";
 import { usePostFunction } from "../../home/hook/usePostFunction";
+import { usePostValidation } from "../../home/hook/usePostValidation";
 import { IPostForm } from "../../../types/post";
 import { Controller } from "react-hook-form";
 
 const PostModal = () => {
-  const { control, handleSubmit, reset } = usePostValidation();
-  const postFunction = usePostFunction();
-
-  const onError = (errors: any) => {
-    console.log(errors);
-  };
-
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // const { control, handleSubmit, reset } = usePostValidation();
+  // const onError = (errors: any) => {
+  //   console.log(errors);
+  // };
 
   //===============================================================
-
-  const [content, setContent] = useState("");
-  const [image, setImage] = useState("");
-
-  const formData: IPostForm = { content: content, image: image };
-
-  const handleFile = (e: any) => {
-    setImage(e.target.file);
+  //Handle Modal
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    setOpen(false);
+    setImage(null);
   };
 
-  const onSubmit = async (data: IPostForm) => {
-    console.log(data.content);
-    console.log(data.image);
+  const postFunction = usePostFunction();
+  const [content, setContent] = useState("");
+  const [image, setImage] = useState<any>(null);
 
-    await postFunction.createPost(data);
+  const handleFile = (e: any) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      console.log(file[0]);
+    }
+  };
 
-    reset();
+  const onSubmit = async () => {
+    const formData = new FormData();
+
+    if (content) {
+      formData.append("content", content);
+    }
+
+    if (image) {
+      formData.append("image", image);
+    }
+
+    await postFunction.createPost(formData);
   };
 
   return (
@@ -52,7 +61,10 @@ const PostModal = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              onSubmit(formData);
+              onSubmit();
+              setContent("");
+              setImage(null);
+              handleClose();
             }}
           >
             <Box className="textbar" sx={{ display: "flex", gap: 1, borderBottom: "1px solid gray" }}>
@@ -68,7 +80,7 @@ const PostModal = () => {
             </Box>
 
             <Box className="btn" sx={{ display: "flex", justifyContent: "space-between", marginTop: 2 }}>
-              <input type="file" accept="image/*" onChange={handleFile} />
+              <input type="file" accept="image/*" onChange={handleFile} style={{ color: "gray" }} />
               <Button type="submit" variant="contained" sx={{ borderRadius: 23, backgroundColor: "mediumslateblue", color: "whitesmoke" }}>
                 Post
               </Button>

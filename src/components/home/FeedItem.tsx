@@ -3,15 +3,23 @@ import { Avatar, Box, Typography } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import { useLikeFunction } from "../like/hook/useLikeFunction";
 import { useEffect, useState } from "react";
+import { userReplyFunction } from "../detailPost/hook/useReplyFunction";
 
 const FeedItem = (item: any) => {
   const useLike = useLikeFunction();
+  const useReply = userReplyFunction();
+  const [totalReply, setTotalReply] = useState();
   const [totalLike, setTotalLike] = useState();
   const [isLike, setIsLike] = useState(false);
+  const baseUrl = "http://localhost:3000/uploads/";
 
   useEffect(() => {
     useLike.countLike(String(item.item.id)).then((result) => {
       setTotalLike(result);
+    });
+
+    useReply.countReply(String(item.item.id)).then((result) => {
+      setTotalReply(result);
     });
 
     useLike.checkLike(String(item.item.id)).then((result) => {
@@ -61,6 +69,8 @@ const FeedItem = (item: any) => {
             </Box>
           </NavLink>
 
+          <img src={`${baseUrl}${item.item.image}`} alt="" style={{ width: "150px" }} />
+
           <Box sx={{ display: "flex", gap: 2 }}>
             <Box sx={{ display: "flex", alignItems: "center", marginBottom: 1, gap: 1 }}>
               {/* Atur Like =================================================================*/}
@@ -78,7 +88,7 @@ const FeedItem = (item: any) => {
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", marginBottom: 1, gap: 1 }}>
               <Icon icon={"majesticons:comment-2-text-line"} color="whitesmoke" fontSize={"25px"} />
-              <Typography sx={{ color: "gray" }}>20</Typography>
+              <Typography sx={{ color: "gray" }}>{totalReply}</Typography>
             </Box>
           </Box>
         </Box>

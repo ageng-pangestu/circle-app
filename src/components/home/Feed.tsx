@@ -14,8 +14,6 @@ const Feed = () => {
     });
   }, []);
 
-  console.log(dataPost);
-
   return dataPost.map((item) => {
     return (
       <>

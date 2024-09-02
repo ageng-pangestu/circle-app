@@ -1,6 +1,6 @@
 export interface IPostForm {
   content?: string;
-  image?: string;
+  image?: any;
 }
 
 export interface IPostModel {

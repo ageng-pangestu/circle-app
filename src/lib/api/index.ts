@@ -1,7 +1,7 @@
 import axois from "axios";
 
 export const api = axois.create({
-  baseURL: import.meta.env.VITE_SERVER_URL,
+  baseURL: import.meta.env.VITE_SERVER_URL || "http://localhost:3000",
 });
 
 //ini untuk menerima token

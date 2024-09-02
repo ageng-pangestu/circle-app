@@ -31,11 +31,8 @@ export const checkAuth = async (token: string) => {
 };
 
 export async function update(user_id: string, body: IProfileForm) {
-  console.log("masuk ke call auth update");
-
   const response = await api.put("/auth/" + user_id, body);
 
-  console.log("apa itu reponse data register");
   console.log(response.data);
 
   return response.data;

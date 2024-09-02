@@ -1,10 +1,9 @@
 import * as postAsync from "../../../lib/api/call/post";
-import { IPostForm } from "../../../types/post";
 
 export const usePostFunction = () => {
-  const createPost = async (body: IPostForm) => {
+  const createPost = async (formData: any) => {
     try {
-      const res = await postAsync.createPost(body);
+      const res = await postAsync.createPost(formData);
 
       return res;
     } catch (error) {
@@ -15,8 +14,6 @@ export const usePostFunction = () => {
   const getAllPost = async () => {
     try {
       const resData = await postAsync.getAllPost();
-
-      console.log(resData);
 
       return resData;
     } catch (error) {

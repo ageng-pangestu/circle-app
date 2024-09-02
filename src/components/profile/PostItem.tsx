@@ -8,6 +8,7 @@ import { IPostModel } from "../../types/post";
 const PostItem = () => {
   const { user_id } = useParams();
   const userPostFunction = useProfilPostFunction();
+  const baseUrl = "http://localhost:3000/uploads/";
 
   const [dataUserPost, setDataUserPost] = useState<IPostModel[]>([]);
 
@@ -15,7 +16,7 @@ const PostItem = () => {
     userPostFunction.getAllProfilePost(String(user_id)).then((result) => {
       setDataUserPost(result);
     });
-  }, []);
+  }, [user_id]);
 
   return dataUserPost.map((item) => {
     return (
@@ -43,6 +44,8 @@ const PostItem = () => {
             <Box sx={{ marginBottom: 1, color: "whitesmoke" }}>
               <Typography>{item.content}</Typography>
             </Box>
+
+            <img src={`${baseUrl}${item.image}`} alt="" style={{ width: "150px" }} />
 
             <Box sx={{ display: "flex", gap: 2 }}>
               <Box sx={{ display: "flex", alignItems: "center", marginBottom: 1, gap: 1 }}>

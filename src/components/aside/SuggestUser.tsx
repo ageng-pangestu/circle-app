@@ -33,7 +33,6 @@ const SuggestUser = (item: any) => {
             <Typography sx={{ color: "gray" }}>@{item.item.userName}</Typography>
           </Link>
         </Box>
-        <h1>{item.item.id}</h1>
         <Button
           onClick={() => {
             handleFollow(String(item.item.id));
