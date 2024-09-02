@@ -1,10 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { Avatar, Box, Button, FormControl, FormHelperText, Modal, TextareaAutosize } from "@mui/material";
+import { Avatar, Box, Button, Modal, TextareaAutosize } from "@mui/material";
 import React, { useState } from "react";
 import { usePostFunction } from "../../home/hook/usePostFunction";
-import { usePostValidation } from "../../home/hook/usePostValidation";
-import { IPostForm } from "../../../types/post";
-import { Controller } from "react-hook-form";
 
 const PostModal = () => {
   // const { control, handleSubmit, reset } = usePostValidation();

@@ -1,7 +1,6 @@
 import { Button, FormControl, FormHelperText, Typography } from "@mui/material";
 import CustomInput from "../common/Input";
 import { Link, useNavigate } from "react-router-dom";
-import { Icon } from "@iconify/react";
 import { useRegisterValidation } from "./hooks/useRegisterValidation";
 import { Controller } from "react-hook-form";
 import { IRegisterForm } from "../../types/register";

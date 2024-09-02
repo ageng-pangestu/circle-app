@@ -1,7 +1,6 @@
 import { Box, Button, FormHelperText, Typography } from "@mui/material";
 import CustomInput from "../common/Input";
 import { Link } from "react-router-dom";
-import { Icon } from "@iconify/react/dist/iconify.js";
 import { useLoginValidation } from "./hooks/useLoginValidation";
 import { Controller } from "react-hook-form";
 import { useLoginFunction } from "./hooks/useLoginFunction";
