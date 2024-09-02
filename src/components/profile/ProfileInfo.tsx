@@ -8,7 +8,6 @@ import { useUserFunction } from "./hook/useUserFunction";
 import { IUser } from "../../types/store";
 
 const ProfileInfo = () => {
-  const baseUrl = "http://localhost:3000/uploads/";
   const { user_id } = useParams();
 
   const useFunction = useUserFunction();
@@ -33,7 +32,7 @@ const ProfileInfo = () => {
 
       <Box className="profile-image" sx={{ position: "relative", width: "100%", height: "10rem", backgroundColor: "gray", borderRadius: 3 }}>
         <img src="https://marketplace.canva.com/EAFCO6pfthY/1/0/1600w/canva-blue-green-watercolor-linktree-background-F2CyNS5sQdM.jpg" alt="foto" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "10px" }} />
-        <Avatar src={`${baseUrl}${dataUser?.profile_pic}`} sx={{ position: "absolute", bottom: -25, left: 25, width: "70px", height: "70px" }} alt="Ageng" />
+        <Avatar src="" sx={{ position: "absolute", bottom: -25, left: 25, width: "70px", height: "70px" }} alt="Ageng" />
       </Box>
 
       <Box className="profile-edit-btn" marginLeft={"auto"} sx={{ flex: 2 }}>

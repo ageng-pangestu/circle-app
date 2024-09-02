@@ -11,7 +11,6 @@ const FeedItem = (item: any) => {
   const [totalReply, setTotalReply] = useState();
   const [totalLike, setTotalLike] = useState();
   const [isLike, setIsLike] = useState(false);
-  const baseUrl = "http://localhost:3000/uploads/";
 
   useEffect(() => {
     useLike.countLike(String(item.item.id)).then((result) => {
@@ -69,7 +68,7 @@ const FeedItem = (item: any) => {
             </Box>
           </NavLink>
 
-          <img src={`${baseUrl}${item.item.image}`} alt="" style={{ width: "150px" }} />
+          <img src="" alt="" style={{ width: "150px" }} />
 
           <Box sx={{ display: "flex", gap: 2 }}>
             <Box sx={{ display: "flex", alignItems: "center", marginBottom: 1, gap: 1 }}>
