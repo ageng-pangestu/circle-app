@@ -68,7 +68,7 @@ const FeedItem = (item: any) => {
             </Box>
           </NavLink>
 
-          <img src="" alt="" style={{ width: "150px" }} />
+          <img src={item.item.image} alt="" style={{ width: "150px" }} />
 
           <Box sx={{ display: "flex", gap: 2 }}>
             <Box sx={{ display: "flex", alignItems: "center", marginBottom: 1, gap: 1 }}>
