@@ -10,7 +10,6 @@ import Search from "../pages/Search";
 import ProfileLayout from "../layout/ProfileLayout";
 import Media from "../pages/Media";
 import AllPost from "../pages/AllPost";
-import TestPage from "../pages/TestPage/TestPage";
 import DetailPost from "../pages/DetailPost";
 
 const routes: RouteObject[] = [
@@ -73,10 +72,6 @@ const routes: RouteObject[] = [
     path: "/auth",
     element: <AuthLayout />,
     children: [
-      {
-        path: "test",
-        element: <TestPage />,
-      },
       {
         path: "register",
         element: <Register />,
