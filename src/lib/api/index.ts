@@ -1,7 +1,7 @@
 import axois from "axios";
 
 export const api = axois.create({
-  baseURL: import.meta.env.VITE_SERVER_URL || "https://express-delta-six.vercel.app/",
+  baseURL: import.meta.env.SERVER_URL || "https://express-delta-six.vercel.app/",
 });
 
 //ini untuk menerima token
