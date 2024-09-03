@@ -68,7 +68,7 @@ const FeedItem = (item: any) => {
             </Box>
           </NavLink>
 
-          <img src="https://res.cloudinary.com/dltzkubgf/image/upload/v1725278636/circle/xqk1fjorum58g7au3m2w.jpg" alt="" style={{ width: "150px" }} />
+          <img src={item.item.image} alt="contentImage" style={{ width: "150px" }} />
 
           <Box sx={{ display: "flex", gap: 2 }}>
             <Box sx={{ display: "flex", alignItems: "center", marginBottom: 1, gap: 1 }}>
