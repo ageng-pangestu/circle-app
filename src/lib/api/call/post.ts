@@ -2,6 +2,8 @@ import { IPostForm } from "../../../types/post";
 import { api } from "../index.ts";
 
 export async function createPost(body: IPostForm) {
+  console.log("masuk call create post: ");
+
   const response = await api.post("/posts", body, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
